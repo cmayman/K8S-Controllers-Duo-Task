@@ -7,7 +7,7 @@ data:
     server {
       listen 80;
         location / {
-          proxy_pass http://flask-app:5001;
+          proxy_pass http://flask-app:5500;
         }
     }
 ---

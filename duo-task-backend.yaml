@@ -8,8 +8,8 @@ spec:
     app: flask-app
   ports:
   - protocol: TCP
-    port: 5001
-    targetPort: 5001
+    port: 5500
+    targetPort: 5500
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,4 +35,4 @@ spec:
       - name: flask-app
         image: cmayman/flask-app:latest
         ports:
-        - containerPort: 5001
+        - containerPort: 5500
