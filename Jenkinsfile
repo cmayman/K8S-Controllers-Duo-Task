@@ -47,12 +47,14 @@ pipeline {
                     if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
                         kubectl apply -f . --namespace development
+                        kubectl rollout restart deployment flask-app --namespace development
                         '''
                         // apply in development namespace
                     }
                     if (env.GIT_BRANCH == 'origin/main') {
                         sh '''
                         kubectl apply -f . --namespace production
+                        kubectl rollout restart deployment flask-app --namespace production
                         '''
                         // apply in main namespace 
                     }
