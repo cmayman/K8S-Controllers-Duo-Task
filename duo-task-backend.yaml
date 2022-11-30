@@ -34,6 +34,6 @@ spec:
       containers:
       - name: flask-app
         imagePullPolicy: Always
-        image: maymanchris-flask-app:latest
+        image: gcr.io/lbg-python-cohort-8/maymanchris-flask-app:latest
         ports:
         - containerPort: 5500
