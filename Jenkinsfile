@@ -52,7 +52,7 @@ pipeline {
                     }
                     if (env.GIT_BRANCH == 'origin/main') {
                         sh '''
-                        kubectl apply -f . --namespace main
+                        kubectl apply -f . --namespace production
                         '''
                         // apply in main namespace 
                     }
