@@ -4,13 +4,13 @@ pipeline {
         stage('Build') {
             steps {
                 script { 
-                    if (env.BRANCH_NAME == 'development') {
+                    if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
                         docker build -f ./Dockerfile -t cmayman/flask-app:latest .
                         '''
                         // build the image from the Dockerfile
                     }
-                    if (env.BRANCH_NAME == 'main') {
+                    if (env.GIT_BRANCH == 'origin/main') {
                         echo 'no need to rebuild'
                         // Skip
                     }
@@ -24,13 +24,13 @@ pipeline {
         stage('Push') {
              steps {
                 script { 
-                    if (env.BRANCH_NAME == 'development') {
+                    if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
                         docker push cmayman/flask-app:latest
                         '''
                         // push the image to the repository
                     }
-                    if (env.BRANCH_NAME == 'main') {
+                    if (env.GIT_BRANCH == 'origin/main') {
                         echo 'nothing to push'
                         // Skip
                     }
@@ -44,13 +44,13 @@ pipeline {
         stage('Run') {
              steps {
                 script { 
-                    if (env.BRANCH_NAME == 'development') {
+                    if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
                         kubectl apply -f . --namespace development
                         '''
                         // apply in development namespace
                     }
-                    if (env.BRANCH_NAME == 'main') {
+                    if (env.GIT_BRANCH == 'origin/main') {
                         sh '''
                         kubectl apply -f . --namespace main
                         '''
