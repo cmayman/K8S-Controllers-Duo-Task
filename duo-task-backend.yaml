@@ -33,6 +33,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: cmayman/flask-app:latest
+        imagePullPolicy: Always
+        image: maymanchris-flask-app:latest
         ports:
         - containerPort: 5500
