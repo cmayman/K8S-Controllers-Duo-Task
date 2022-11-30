@@ -6,7 +6,7 @@ pipeline {
                 script { 
                     if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
-                        docker build -f ./Dockerfile -t maymanchris-flask-app:latest .
+                        docker build -f ./Dockerfile -t gcr.io/lbg-python-cohort-8/maymanchris-flask-app:latest .
                         '''
                         // build the image from the Dockerfile
                     }
@@ -26,7 +26,7 @@ pipeline {
                 script { 
                     if (env.GIT_BRANCH == 'origin/development') {
                         sh '''
-                        docker push maymanchris-flask-app:latest
+                        docker push gcr.io/lbg-python-cohort-8/maymanchris-flask-app:latest
                         '''
                         // push the image to the repository
                     }
